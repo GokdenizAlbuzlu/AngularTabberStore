@@ -15,6 +15,7 @@ import { MyproductsComponent } from './myproducts/myproducts.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { UserproductdetailsComponent } from './userproductdetails/userproductdetails.component';
 import { SearchComponent } from './search/search.component';
+import { SearchPipe } from './search.pipe';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { SearchComponent } from './search/search.component';
     MyproductsComponent,
     ProductdetailsComponent,
     UserproductdetailsComponent,
-    SearchComponent
+    SearchComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

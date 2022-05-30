@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { AppComponent } from '../app.component';
 import { Article } from '../article';
+import { SearchPipe } from '../search.pipe';
 
 
 @Component({
@@ -13,9 +14,15 @@ import { Article } from '../article';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public searchInput: string;
+  public AutoCompleteProducts = [
+      'Tshirt','Pantalon','Veste','Chaussure','Accessoires',
+      'Go','Levis','Adidas','Robe','Nike','Jordan'
+   ]
   Products: Article[];
   angForm: FormGroup;
   constructor(private dataService: ApiService, private router: Router, private fb: FormBuilder) {
+    this.searchInput="";
     this.Products = []
     this.angForm = this.fb.group({
       keyword: ['', Validators.required]

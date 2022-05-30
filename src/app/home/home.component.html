@@ -6,9 +6,29 @@
   <a href="#contact">Contact</a>
   <input type="text" placeholder="Search.." name="keyword" formControlName="keyword">
   <button type="submit" class="form-control btn btn-primary rounded submit px-3">Search</button>
-  
 </div>
 </form>
+  <section>
+
+    <h5> Dynamic search results </h5>
+   <input name="searchInput" [(ngModel)]="searchInput" type="text"  placeholder="Search for products" size="50" list="prdocuts" >
+       <datalist id="prdocuts">
+           <h6> Results </h6>
+           <ul>
+              
+             <li *ngFor="let product of   
+                AutoCompleteProducts | search: searchInput">
+
+                <option value={{product}}></option>
+             
+             </li>
+            
+           </ul>
+       </datalist>
+   </section>
+  
+
+
 <div class="container">
   <div class="row row-cols-2">
   <div *ngFor="let i of Products">

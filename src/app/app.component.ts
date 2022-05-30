@@ -10,6 +10,9 @@ styleUrls: ['./app.component.css']
 })
 
 export class AppComponent {
+
+
+    
 loginbtn:boolean;
 logoutbtn:boolean;
 logvendor:boolean;
