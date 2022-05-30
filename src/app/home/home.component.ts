@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
+import { AppComponent } from '../app.component';
+import { Article } from '../article';
+
 
 @Component({
   selector: 'app-home',
@@ -6,10 +13,68 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  Products: Article[];
+  angForm: FormGroup;
+  constructor(private dataService: ApiService, private router: Router, private fb: FormBuilder) {
+    this.Products = []
+    this.angForm = this.fb.group({
+      keyword: ['', Validators.required]
+    });
+  }
 
-  constructor() { }
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+
+  getData(): void {
+    if (this.dataService.isLoggedInVendor()) {        //si vendeur l'affichage va être différent, on va pas proposer au vendeur d'acheter ses propres produits
+      this.dataService.dispProducts(this.dataService.getTokenVendor())
+        .pipe(first())
+        .subscribe(
+          data => {
+            let i = 0;
+            for (i = 0; i < data.length; i++) {
+              this.Products.push(new Article(data[i].ID, data[i].ID_uti, data[i].Prix, data[i].Type, data[i].Marque, data[i].Titre, data[i].Description, data[i].Taille, data[i].Genre))
+              console.log(this.Products[0].Prix);
+            }
+            console.log(data);
+          },
+
+          error => {
+          });
+    } else {
+      this.dataService.dispProducts(this.dataService.getToken())    //si utilisateur alors on a pas de critères d'affichages
+        .pipe(first())
+        .subscribe(
+          data => {
+            let i = 0;
+            for (i = 0; i < data.length; i++) {
+              this.Products.push(new Article(data[i].ID, data[i].ID_uti, data[i].Prix, data[i].Type, data[i].Marque, data[i].Titre, data[i].Description, data[i].Taille, data[i].Genre))
+              console.log(this.Products[0].Prix);
+            }
+            console.log(data);
+          },
+
+          error => {
+          });
+    }
+
+
+  }
+
+  SearchBar(angForm: any) {
+    this.dataService.searchProduct(angForm.value.keyword).pipe(first())
+      .subscribe(
+        data => {
+         console.log(data);
+        },
+
+        error => {
+        });
   }
 
 }
+
+

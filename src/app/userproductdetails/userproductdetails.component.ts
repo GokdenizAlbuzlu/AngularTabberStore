@@ -9,33 +9,19 @@ import { Vendors } from '../vendor';
 import { Article } from '../article';
 
 @Component({
-  selector: 'app-productdetails',
-  templateUrl: './productdetails.component.html',
-  styleUrls: ['./productdetails.component.css']
+  selector: 'app-userproductdetails',
+  templateUrl: './userproductdetails.component.html',
+  styleUrls: ['./userproductdetails.component.css']
 })
-export class ProductdetailsComponent implements OnInit {
-
+export class UserproductdetailsComponent implements OnInit {
   product: Article
   id: number;
   private sub: any;
-  angForm: FormGroup;
+ 
   
   constructor(private dataService: ApiService, private router: ActivatedRoute,private fb:FormBuilder,private routing:Router ) {
     this.product = new Article(0, 'default', 0, 'default', 'default', 'default', 'default', 'default', 'default');
     this.id = 0;
-    this.angForm = this.fb.group({
-
-      Prix: ['', Validators.required],            //mettre les mêmes noms que les attributs form du .html
-      Type: ['', Validators.required],
-      Marque: ['', [Validators.required]],
-      Titre: ['', Validators.required],
-      Description: ['', Validators.required],
-      Taille: ['', Validators.required],
-      Genre: ['', Validators.required],
-
-
-    });
-
   }
 
   ngOnInit(): void {
@@ -45,34 +31,16 @@ export class ProductdetailsComponent implements OnInit {
     this.getProductDetails();
   }
 
-  getProductDetails() {
+  getProductDetails():void{
     this.dataService.ProductDetails(this.id).pipe(first())
       .subscribe(
         data => {
           this.product = new Article(data.ID, data.ID_uti, data.Prix, data.Type, data.Marque, data.Titre, data.Description, data.Taille, data.Genre)
           console.log(data);
         },
-
-        error => {
-        });
-  }
-
-  modifyProductDetails(angForm:any) {
-    this.dataService.modifyProduct(this.id,this.dataService.getTokenVendor(), angForm.value.Prix, angForm.value.Type, angForm.value.Marque, angForm.value.Titre, angForm.value.Description, angForm.value.Taille, angForm.value.Genre)
-      .pipe(first())
-      .subscribe(
-        data => {
-
-        },
         error => {
         });
 
-        this.routing.navigate(['myproducts']);
   }
-
-
 
 }
-
-
-

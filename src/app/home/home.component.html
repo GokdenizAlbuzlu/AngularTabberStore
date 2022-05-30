@@ -1,7 +1,57 @@
 <h1>TABBER store</h1>
+<form [formGroup]="angForm" (ngSubmit)="SearchBar(angForm)" autocomplete="off" class="signin-form" >
 <div class="topnav">
   <a class="active" href="#home">Home</a>
   <a href="#about">About</a>
   <a href="#contact">Contact</a>
-  <input type="text" placeholder="Search..">
+  <input type="text" placeholder="Search.." name="keyword" formControlName="keyword">
+  <button type="submit" class="form-control btn btn-primary rounded submit px-3">Search</button>
+  
 </div>
+</form>
+<div class="container">
+  <div class="row row-cols-2">
+  <div *ngFor="let i of Products">
+  <div class="container page-wrapper">
+          <div class="page-inner">
+            <div class="row">
+              <div class="el-wrapper">
+                <div class="box-up">
+                  <img class="img" src="assets/{{i.ID}}.png" onerror="if (this.src != 'assets/default.png') this.src = 'assets/default.png';">   
+                  <div class="img-info">
+                    <div class="info-inner">
+                      <span class="p-name">{{i.Titre}}</span>
+                      <span class="p-company">{{i.Marque}}</span>
+                    </div>
+                    <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
+                  </div>
+                </div>
+        
+                <div class="box-down">
+                  <div class="h-bg">
+                    <div class="h-bg-inner"></div>
+                  </div>
+        
+                  <a class="cart">
+                     
+                    
+                   
+                    <span class="price">{{i.Prix}}€</span>
+                    <span class="add-to-cart">
+                       <span class="txt"> <a class="nav-link" [routerLink]="['/userproductdetails', i.ID]" routerLinkActive="active">Buy</a></span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+       
+        
+          </div>
+          
+        </div>
+    
+  </div>
+  

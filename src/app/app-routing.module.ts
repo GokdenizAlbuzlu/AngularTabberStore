@@ -10,6 +10,9 @@ import { RegisterasvendorComponent } from './registerasvendor/registerasvendor.c
 import { AccountComponent } from './account/account.component';
 import { MyproductsComponent } from './myproducts/myproducts.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { UserproductdetailsComponent } from './userproductdetails/userproductdetails.component';
+import { SearchComponent } from './search/search.component';
+
 
 
 const routes: Routes = [
@@ -22,7 +25,10 @@ const routes: Routes = [
 {path : 'registerasvendor',component:RegisterasvendorComponent},
 {path : 'account',component:AccountComponent,canActivate:[AuthguardGuard]},
 {path : 'myproducts',component:MyproductsComponent,canActivate:[AuthguardGuard]},
-{path : 'productdetails/:id',component:ProductdetailsComponent}
+{path : 'productdetails/:id',component:ProductdetailsComponent,canActivate:[AuthguardGuard]},
+{path : 'userproductdetails/:id',component:UserproductdetailsComponent,canActivate:[AuthguardGuard]},
+{path : 'search/:id',component:SearchComponent}
+
 
 ]
 

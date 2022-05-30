@@ -90,6 +90,21 @@ export class ApiService {
         }));
     }
 
+    public dispProducts(email:any){
+        return this.httpClient.post<any>(this.baseUrl + '/home.php', { email })
+            .pipe(map(Users => {
+                return Users;
+            }));
+
+    }
+
+    public searchProduct(keyword:any){
+        return this.httpClient.post<any>(this.baseUrl + '/search.php', {keyword})
+        .pipe(map(Article => {
+            return Article;
+        }));
+    }
+
     
 
 

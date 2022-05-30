@@ -13,6 +13,8 @@ import { RegisterasvendorComponent } from './registerasvendor/registerasvendor.c
 import { AccountComponent } from './account/account.component';
 import { MyproductsComponent } from './myproducts/myproducts.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { UserproductdetailsComponent } from './userproductdetails/userproductdetails.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
     RegisterasvendorComponent,
     AccountComponent,
     MyproductsComponent,
-    ProductdetailsComponent
+    ProductdetailsComponent,
+    UserproductdetailsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
