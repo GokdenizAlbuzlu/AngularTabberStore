@@ -7,15 +7,13 @@ header("Content-Type: application/json; charset=UTF-8");
 
 include_once("database.php");
 $postdata = file_get_contents("php://input");
-$request = json_decode($postdata);
-
 if(isset($postdata) && !empty($postdata))
 {
-$email = trim($request->email);
-$sql = "SELECT * FROM article WHERE (article.ID_utilisateur !='$email')";
+    $request = json_decode($postdata);
+    $keyword=trim($request->keyword);
+
+$sql = "SELECT * FROM article WHERE (article.Type Like '$keyword' OR article.Titre Like '$keyword' OR article.Marque Like '$keyword')";
 $ret=$mysqli->query($sql);
-
-
 
 while( $row = $ret->fetch_array())
     {
@@ -27,15 +25,5 @@ while( $row = $ret->fetch_array())
 
 
 
-
-
-
 }
 
-
-
-
-
-
-
-?>
