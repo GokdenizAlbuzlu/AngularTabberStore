@@ -22,7 +22,7 @@ $cp=trim($request->CodePostal);
 $sql = ("UPDATE vendeur SET Entreprise='$entreprise',AdresseCommercial='$adressecommercial',NumeroTVA='$numerotva',Numregistrecommerce='$numregistrecommerce',PhoneNumber='$phonenumber',Ville='$ville',CodePostal='$cp' WHERE email='$email'");
 
 if ($mysqli->query($sql)){
-
+    
     $data=array('message'=>'success');
     echo json_encode($data); 
 }else{

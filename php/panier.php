@@ -1,5 +1,4 @@
 <?php
-
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Credentials: true');
 header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
@@ -12,19 +11,13 @@ $request = json_decode($postdata);
 if(isset($postdata) && !empty($postdata))
 {
 
-
 $ID_utilisateur = trim($request->ID_utilisateur);
-$Prix= trim($request->Prix);
-$Type = trim($request->Type);
-$Marque = trim($request->Marque);
-$Titre=trim($request->Titre);
-$Description=trim($request->Description);
-$Taille=trim($request->Taille);
-$Genre=trim($request->Genre);
+$ID_article =trim($request->ID_article);
 
 
-$sql = "INSERT INTO article(ID_utilisateur,Prix,Type,Marque,Titre,Description,Taille,Genre) VALUES ('$ID_utilisateur','$Prix','$Type','$Marque','$Titre','$Description','$Taille','$Genre')";
-if ($mysqli->query($sql)) {
+$sql = "INSERT INTO panier(ID_utilisateur,ID_article) VALUES ('$ID_utilisateur','$ID_article')";
+
+if ($mysqli->query($sql)){
 
     $data=array('message'=>'success');
     echo json_encode($data); 
@@ -34,4 +27,8 @@ if ($mysqli->query($sql)) {
     }
 }
 
-?>
+
+
+
+
+

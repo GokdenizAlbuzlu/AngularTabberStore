@@ -10,11 +10,12 @@ $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 if(isset($postdata) && !empty($postdata))
 {
-    
-    $keyword=trim($request->keyword);
 
-$sql = "SELECT * FROM article WHERE (article.Type Like '%$keyword%' OR article.Titre Like '%$keyword%' OR article.Marque Like '%$keyword%')";
+$ID_utilisateur = trim($request->ID_utilisateur);
+$sql = "SELECT * FROM panier INNER JOIN article ON panier.ID_article = article.ID WHERE (panier.ID_utilisateur='$ID_utilisateur')";
 $ret=$mysqli->query($sql);
+
+
 
 while( $row = $ret->fetch_array())
     {
@@ -27,4 +28,3 @@ while( $row = $ret->fetch_array())
 
 
 }
-
