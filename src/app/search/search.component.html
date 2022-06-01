@@ -1,0 +1,51 @@
+
+
+    <div class="container">
+        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">return back</a>
+        <div class="row row-cols-2">
+        <div *ngFor="let i of Products">
+        <div class="container page-wrapper">
+                <div class="page-inner">
+                  <div class="row">
+                    <div class="el-wrapper">
+                      <div class="box-up">
+                        <img class="img" src="assets/{{i.ID}}.png" onerror="if (this.src != 'assets/default.png') this.src = 'assets/default.png';">   
+                        <div class="img-info">
+                          <div class="info-inner">
+                            <span class="p-name">{{i.Titre}}</span>
+                            <span class="p-company">{{i.Marque}}</span>
+                          </div>
+                          <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
+                        </div>
+                      </div>
+              
+                      <div class="box-down">
+                        <div class="h-bg">
+                          <div class="h-bg-inner"></div>
+                        </div>
+              
+                        <a class="cart">
+                           
+                          
+                         
+                          <span class="price">{{i.Prix}}€</span>
+                          <span class="add-to-cart">
+                             <span class="txt"> <a class="nav-link" [routerLink]="['/userproductdetails', i.ID]" routerLinkActive="active">Buy</a></span>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+             
+              
+                </div>
+                
+              </div>
+          
+        </div>
+        
+
+
