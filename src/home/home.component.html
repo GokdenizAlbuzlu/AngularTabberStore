@@ -1,0 +1,78 @@
+<h1>TABBER store</h1>
+
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#about">Homme</a>
+  <a href="#contact">Femme</a>
+  <a href="#enfant">Enfant</a>
+  <input type="text" placeholder="help?" name="help" >
+
+</div>
+
+  <section>
+    <div align="center">
+    <h5>Search your product </h5>
+    <form [formGroup]="angForm" autocomplete="off" class="signin-form" >
+   <input name="searchInput" [(ngModel)]="searchInput" type="text" formControlName="keyword" placeholder="Search for products" size="50" list="prdocuts" ><a class="nav-link" [routerLink]="['/search',this.angForm.value.keyword]" routerLinkActive="active"><img src="./assets/searchBar.png" alt="" height="24" width="25"></a>
+  </form>
+       <datalist id="prdocuts">
+           <h6> Results </h6>
+           <ul>   
+             <li *ngFor="let product of   
+                AutoCompleteProducts | search: searchInput">
+                <option value={{product}}></option>
+             </li>
+           </ul>
+       </datalist>
+ 
+  </div>
+</section>
+
+
+
+<div class="container">
+  <div class="row row-cols-2">
+  <div *ngFor="let i of Products">
+  <div class="container page-wrapper">
+          <div class="page-inner">
+            <div class="row">
+              <div class="el-wrapper">
+                <div class="box-up">
+                  <img class="img" src="assets/{{i.ID}}.png" onerror="if (this.src != 'assets/default.png') this.src = 'assets/default.png';">   
+                  <div class="img-info">
+                    <div class="info-inner">
+                      <span class="p-name">{{i.Titre}}</span>
+                      <span class="p-company">{{i.Marque}}</span>
+                    </div>
+                    <div class="a-size">Available sizes : <span class="size">S , M , L , XL</span></div>
+                  </div>
+                </div>
+        
+                <div class="box-down">
+                  <div class="h-bg">
+                    <div class="h-bg-inner"></div>
+                  </div>
+        
+                  <a class="cart">
+                     
+                    
+                   
+                    <span class="price">{{i.Prix}}€</span>
+                    <span class="add-to-cart">
+                       <span class="txt"> <a class="nav-link" [routerLink]="['/userproductdetails', i.ID]" routerLinkActive="active">Buy</a></span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+       
+        
+          </div>
+          
+        </div>
+    
+  </div>
+  
