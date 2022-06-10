@@ -12,25 +12,25 @@ $request = json_decode($postdata);
 if(isset($postdata) && !empty($postdata))
 {
 $email = trim($request->email);
+$filter=trim($request->filter);
+
+if($filter=='not'){
 $sql = "SELECT * FROM article WHERE (article.ID_utilisateur !='$email')";
+}
+if($filter=='pricedesc'){
+$sql="SELECT * FROM article WHERE (article.ID_utilisateur !='$email') ORDER BY article.Prix DESC";
+}
 $ret=$mysqli->query($sql);
-
-
-
 while( $row = $ret->fetch_array())
     {
         $data[]=array('ID'=>$row['ID'],'ID_uti'=>$row['ID_utilisateur'],'Marque'=>$row['Marque'],'Titre'=>$row['Titre'],'Type'=>$row['Type'],'Prix'=>$row['Prix'],'Description'=>$row['Description'],'Taille'=>$row['Taille'],'Genre'=>$row['Genre']);          // 00h35 : si on résout ça c'est finis mdr . 01h12: on a résout c'est finis mdr
-        
-        
+
     }
     echo json_encode($data);
 
-
-
-
-
-
 }
+
+
 
 
 

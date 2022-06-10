@@ -13,7 +13,7 @@ if(isset($postdata) && !empty($postdata))
     
     $keyword=trim($request->keyword);
 
-$sql = "SELECT * FROM article WHERE (article.Type Like '%$keyword%' OR article.Titre Like '%$keyword%' OR article.Marque Like '%$keyword%')";
+$sql = "SELECT * FROM article WHERE (article.Type Like '%$keyword%' OR article.Titre Like '%$keyword%' OR article.Marque Like '%$keyword%' OR article.Genre Like '%$keyword%')";
 $ret=$mysqli->query($sql);
 
 while( $row = $ret->fetch_array())

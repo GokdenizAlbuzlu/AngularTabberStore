@@ -19,7 +19,7 @@ $ret=$mysqli->query($sql);
 
 while( $row = $ret->fetch_array())
     {
-        $data[]=array('ID'=>$row['ID'],'ID_uti'=>$row['ID_utilisateur'],'Marque'=>$row['Marque'],'Titre'=>$row['Titre'],'Type'=>$row['Type'],'Prix'=>$row['Prix'],'Description'=>$row['Description'],'Taille'=>$row['Taille'],'Genre'=>$row['Genre']);          // 00h35 : si on résout ça c'est finis mdr . 01h12: on a résout c'est finis mdr
+        $data[]=array('ID'=>$row['ID'],'ID_uti'=>$row['ID_utilisateur'],'Marque'=>$row['Marque'],'Titre'=>$row['Titre'],'Type'=>$row['Type'],'Prix'=>$row['Prix'],'Description'=>$row['Description'],'Taille'=>$row['Taille'],'Genre'=>$row['Genre'],'Quantite'=>$row['Quantite']);          // 00h35 : si on résout ça c'est finis mdr . 01h12: on a résout c'est finis mdr
         
         
     }

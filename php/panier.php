@@ -14,8 +14,21 @@ if(isset($postdata) && !empty($postdata))
 $ID_utilisateur = trim($request->ID_utilisateur);
 $ID_article =trim($request->ID_article);
 
+$sql2="SELECT * FROM panier Where ID_utilisateur='$ID_utilisateur' AND ID_article='$ID_article'";
+$result=mysqli_query($mysqli,$sql2);
+$nums=mysqli_num_rows($result);
 
-$sql = "INSERT INTO panier(ID_utilisateur,ID_article) VALUES ('$ID_utilisateur','$ID_article')";
+if($nums>0){
+    $sql3="UPDATE panier SET Quantite=Quantite+1 WHERE ID_article='$ID_article' AND ID_utilisateur='$ID_utilisateur'";
+    if ($mysqli->query($sql3)) {
+        $data=array('message'=>'success');
+        echo json_encode($data); 
+    }else{
+        $data=array('message'=>'failed');
+        echo json_encode($data); 
+        }
+}else{
+$sql = "INSERT INTO panier(ID_utilisateur,ID_article,Quantite) VALUES ('$ID_utilisateur','$ID_article',1)";
 
 if ($mysqli->query($sql)){
 
@@ -26,7 +39,7 @@ if ($mysqli->query($sql)){
     echo json_encode($data); 
     }
 }
-
+}
 
 
 

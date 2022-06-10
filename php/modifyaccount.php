@@ -16,7 +16,7 @@ $email = mysqli_real_escape_string($mysqli, trim($request->email));
 $ville=trim($request->ville);
 $cp=trim($request->cp);
 
-$sql = ("UPDATE utilisateur SET prenom='$prenom',nom='$prenom',ville='$ville',cp='$cp' WHERE email='$email'");
+$sql = ("UPDATE utilisateur SET prenom='$prenom',nom='$nom',ville='$ville',cp='$cp' WHERE email='$email'");
 
 if ($mysqli->query($sql)){
 

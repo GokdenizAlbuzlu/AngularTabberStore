@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 		if (0 < $_FILES['file']['error']) {
 			echo 'Error during file upload ' . $_FILES['file']['error'];
 		} else {
-			$upload_path = 'C:/xampp/htdocs/WE4B/ProjetWE4B/src/assets/';			//attention au chemin absolue TRES IMPORTANT !!!!!!!!!!!!!
+			$upload_path = '../src/assets/';			//attention au chemin absolue TRES IMPORTANT !!!!!!!!!!!!!
 			//if (file_exists($upload_path . $_FILES['file']['name'])) {
 				//echo 'File already exists => ' . $upload_path . $_FILES['file']['name'];
 			//} else {
