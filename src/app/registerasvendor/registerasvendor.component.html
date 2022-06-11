@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="./registerasvendor.component.css">
+	</head>
+
+	<body>
+
+		<div class="wrapper" style="background-image: url('assets/bg-registration-form-1.jpg');">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="assets/registration-form-1.jpg" alt="">
+				</div>
+                <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" >
+					<h3>Professional registration</h3>
+					<div class="form-group">
+                        <input type="text" name="Entreprise" formControlName="Entreprise" autocomplete="off" class="form-control" placeholder="Company">
+                        <input type="text" name="numregistrecommerce" formControlName="numregistrecommerce" autocomplete="off" class="form-control" placeholder="Numéro de registre de commerce">
+			
+					</div>
+                    <div class="form-group">
+                        <input type="text" name="numerotva" formControlName="numerotva" autocomplete="off" class="form-control" placeholder="NumeroTVA">
+                        <input type="text" name="adressecommercial" formControlName="adressecommercial" autocomplete="off" class="form-control" placeholder="Company address">
+					</div>
+                    <div class="form-group">
+                        <input type="text" name="ville" formControlName="ville" autocomplete="off" class="form-control" placeholder="Ville">
+						<input type="number" name="cp" formControlName="cp" autocomplete="off" class="form-control" placeholder="Code postal">
+					</div>
+					<div class="form-wrapper">
+						<input type="text" name="email" formControlName="email" autocomplete="off" class="form-control" placeholder="E-mail">
+						<i class="zmdi zmdi-account"></i>
+					</div>
+
+					<div class="form-wrapper">
+                        <input type="password" name="pwd" formControlName="pwd" autocomplete="off" class="form-control"  placeholder="Password">
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+                    <div class="form-wrapper">
+                        <input type="number" name="phonenumber" formControlName="phonenumber" autocomplete="off" class="form-control"  placeholder="Phone Number">
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+
+					<button>Register
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+		
+	</body>
+</html>

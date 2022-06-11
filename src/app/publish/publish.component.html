@@ -1,0 +1,109 @@
+<h2 class="text-center">New Product</h2>
+<div class="row">
+<div class="col-md-3">
+</div>
+<div class="col-md-6 col-md-offset-3">
+<div class="jumbotron">
+
+<form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" >
+<div class="form-group">
+<label for="name">Prix</label>
+<input type="text" name="Prix" formControlName="Prix" autocomplete="off" class="form-control input-sm" placeholder="Prix">
+</div>
+<div class="form-group">
+<label for="fname">Type d'article</label>
+<input list="type" name="Type" formControlName="Type" class="form-control input-sm" placeholder="Type d'article" id="Type"/>
+<datalist id="type">
+  <option value="T-shirts">Tshirt</option>
+  <option value="Chaussure">Chaussures</option>
+  <option value="Veste">Veste</option>
+  <option value="Robe">Robes</option>
+  <option value="Pantalon">Pantalon</option>
+  <option value="Short">Short</option>
+  <option value="Bag">Sac</option>
+  <option value="Accessoire">Accessoires</option>
+</datalist>
+</div>
+
+<div class="form-group">
+<label for="email">Marque de l'article</label>
+<input list ="marque" name="Marque" formControlName="Marque"  class="form-control input-sm" placeholder="Marque" id="Marque"/>
+  <datalist id="marque">
+  <option value="ZARA">ZARA</option>
+  <option value="NIKE">NIKE</option>
+  <option value="ADIDAS">ADIDAS</option>
+  <option value="JORDAN">JORDAN</option>
+  <option value="CHANEL">CHANEL</option>
+  <option value="YSL">YSL</option>
+  <option value="HERMES">HERMES</option>
+  <option value="ALEXANDERMCQUEEN">ALEXANDER MCQUEEN</option>
+  <option value="DIOR">DIOR</option>
+  <option value="GUCCI">GUCCI</option>
+  <option value="BOSS">BOSS</option>
+  <option value="TOMMYHILFIGER">TOMMY HILFIGER</option>
+  <option value="PRADA">PRADA</option>
+  <option value="MICHAEK KORS">MICHAEL KORS</option>
+  <option value="BALMAIN">BALMAIN</option>
+  <option value="BURBERRY">BURBERRY</option>
+  <option value="JIMMYCHOO">JIMMYCHOO</option>
+  <option value="KARL LEGARFELD">KARL LEGARFELD</option>
+  <option value="KENZO">KENZO</option>
+  <option value="BVLGARI">BVLGARI</option>
+  <option value="CALVIN KLEIN">CALVIN KLEIN</option>
+  <option value="LACOSTE">LACOSTE</option>
+  <option value="DKNY">DKNY</option>
+  <option value="GUESS">GUESS</option>
+  <option value="GIORGIO ARMANI">GIORGIO ARMANI</option>
+  <option value="MONTBLANC">MONTBLANC</option>
+  <option value="MOSCHINO">MOSCHINO</option>
+  <option value="MIUMIU">MIUMIU</option>
+  <option value="DOLCE&GABANA">DOLCE&GABANA</option>
+</datalist>
+
+
+</div>
+<div class="form-group">
+<label for="Password">Titre</label>
+<input type="text" name="Titre" formControlName="Titre" autocomplete="off" class="form-control input-sm" placeholder="Nom de l'article">
+</div>
+<div class="form-group">
+<label for="ville">Description</label>
+<input type="text" name="Description" formControlName="Description" autocomplete="off" class="form-control input-sm" placeholder="Description">
+</div>
+<div class="form-group">
+<label for="cp">Taille</label>
+<input type="text" name="Taille" formControlName="Taille" autocomplete="off" class="form-control input-sm" placeholder="Taille">
+</div>
+<div class="form-group">
+<label for="cp">Genre</label>
+<input list="genre" name="Genre" formControlName="Genre" class="form-control input-sm" placeholder="Genre"/>
+<datalist id="genre">
+  <option value="Homme">Homme</option>
+  <option value="Femme">Femme</option>
+  <option value="Enfant">Enfant</option>
+</datalist>
+
+</div>
+<button type="submit" class="btn btn-success">Post</button>
+</form>
+
+<div class="mc">
+
+    <div class="text-center">
+      
+        <label class="btn btn-default">
+          Upload Images
+          <input type="file" hidden (change)="uploadFile($event)">
+          <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+	    <div><img class ="img"[src]="url" *ngIf="url"></div>
+      <div><img class="img" src="assets/addImage.jpg" *ngIf="this.defaultImage"></div>
+        </label>
+      
+      </div>
+    </div>
+</div>
+
+</div>
+<div class="col-md-3">
+</div>
+</div>

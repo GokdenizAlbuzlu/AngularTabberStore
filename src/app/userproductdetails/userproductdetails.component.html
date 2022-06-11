@@ -1,0 +1,42 @@
+
+    <div class="container py-4 my-4 mx-auto d-flex flex-column">
+        <div class="header">
+            <div class="row r1">
+                <div class="col-md-9 abc">
+                    <h1>{{product.Titre}}</h1>
+                </div>
+                <div class="col-md-3 text-right pqr"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                <p class="text-right para">Genre : {{product.Genre}}</p>
+                <p class="text-right para">Prix : {{product.Prix}} €</p>
+                <p><a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"><img src="/assets/icons/iconclose2.png"></a></p>
+            </div>
+        </div>
+        <div class="container-body mt-4">
+            <div class="row r3">
+                <div class="col-md-5 p-0 klo">
+                    <ul>
+                        <li></li>
+                        <li>Free Shipping</li>
+                        <li>Type : {{product.Type}}</li>
+                        <li>Marque : {{product.Marque}}</li>
+                        <li>EMI Starting from (On Credit Cards)</li>
+                        <li>Normal Delivery : 4-5 Days</li>
+                        <li>Express Delivery : 2-3 Days</li>
+                        <li>Size : {{product.Taille}}</li>
+                        <li>Company name : {{this.vendor}}</li>
+                        
+
+                        <li> <img src="/assets/icons/pay01.png">  <img src="/assets/icons/pay02.png">  <img src="/assets/icons/pay03.png">   <img src="/assets/icons/pay04.png">   <img src="/assets/icons/pay05.png">         </li>
+                    </ul>
+                </div>
+                <div class="col-md-7"> <img src="assets/{{this.id}}.png" width="90%" height="95%" onerror="if (this.src != 'assets/default.png') this.src = 'assets/default.png';">   </div>
+            </div>
+        </div>
+        <div class="footer d-flex flex-column mt-5">
+            <div class="row r4">
+                <div class="col-md-2 myt des"><a href="#">Description</a> </div>
+                <div class="col-md-2 myt "><a href="#">Review</a></div>
+                <div class="col-md-2 mio offset-md-4"><button class="btn btn-outline-warning" (click)="AddtoCart(this.id)">ADD TO CART</button></div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+  <a class="navbar-brand" *ngIf="!logvendor" routerLink="home" routerLinkActive="active">Tabber</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
+  
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarsExample">
+  <ul class="navbar-nav mr-auto">
+  <li class="nav-item">
+  <a class="nav-link" *ngIf="loginbtn" routerLink="home" routerLinkActive="active">Store</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" *ngIf="loginbtn" routerLink="login" routerLinkActive="active">Login</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" *ngIf="loginbtn" routerLink="registerasvendor" routerLinkActive="active">Register as vendor</a>
+  </li>
+  <li class="nav-item">
+  <button type="button" *ngIf="logoutbtn" class="btn btn-block" (click)="logout()">logout</button>
+  </li>
+  <li class="nav-item">
+  <a class ="nav-link" *ngIf="logvendor" routerLink="publish" routerLinkActive="active">Sell Products</a>       <!--attention on ne doit pas oublier de modifier les router link :!!! -->
+  </li>
+  <li class="nav-item">
+  <a class ="nav-link" *ngIf="logoutbtn" routerLink="account" routerLinkActive="active">My Account</a>          <!-- idem -->
+  </li>
+  <li class="nav-item">
+  <a class ="nav-link" *ngIf="logvendor" routerLink="myproducts" routerLinkActive="active">My Products</a>          <!-- idem -->
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" *ngIf="loginbtn" routerLink="registration" routerLinkActive="active">Registration</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" *ngIf="logoutbtn" routerLink="dashboard" routerLinkActive="active">Dashboard</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" *ngIf="logoutbtn && !logvendor" routerLink="panier" routerLinkActive="active">My Cart</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link"  routerLink="aboutus" routerLinkActive="active">About Us</a>
+  </li>
+
+    
+  
+  
+  </ul>
+  </div>
+  </nav>
+  <router-outlet></router-outlet>

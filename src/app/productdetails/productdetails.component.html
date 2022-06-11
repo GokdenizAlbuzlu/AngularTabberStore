@@ -1,0 +1,43 @@
+<form [formGroup]="angForm" (ngSubmit)="modifyProductDetails(angForm)" autocomplete="off" >
+<div class="container py-4 my-4 mx-auto d-flex flex-column">
+    <div class="header">
+        <div class="row r1">
+            <div class="col-md-9 abc">
+                <h1>Titre : <input type="text" name="Titre"  formControlName="Titre" autocomplete="off"   [(ngModel)]="product.Titre" ></h1>
+            </div>
+            <div class="col-md-3 text-right pqr"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+            <p class="text-right para"><b>Genre :</b> <input type="text" name="Genre" formControlName="Genre" autocomplete="off" [(ngModel)]="product.Genre"></p>
+            <p class="text-right para"><b>Prix :</b> <input type="text" name="Prix" formControlName="Prix" autocomplete="off"  [(ngModel)]="product.Prix"> €</p>
+            <p><a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"><img src="/assets/icons/iconclose2.png"></a></p>
+        </div>
+    </div>
+    <div class="container-body mt-4">
+        <div class="row r3">
+            <div class="col-md-5 p-0 klo">
+                <ul>
+                    <li></li>
+                    <li>Free Shipping</li>
+                    <li>Type d'article : <input type="text" name="Type" formControlName="Type" autocomplete="off" [(ngModel)]="product.Type"></li>
+                    <li>EMI Starting from (On Credit Cards)</li>
+                    <li>Marque : <input type="text" name="Marque" formControlName="Marque" autocomplete="off"[(ngModel)]="product.Marque"></li>
+                    <li>Normal Delivery : 4-5 Days</li>
+                    <li>Express Delivery : 2-3 Days</li>
+                    <li>Size : <input type="text" name="Taille"  formControlName="Taille" autocomplete="off"[(ngModel)]="product.Taille"></li>
+                
+                </ul>
+            </div>
+            <div class="col-md-7"> <img src="assets/{{this.id}}.png" width="90%" height="90%" onerror="if (this.src != 'assets/default.png') this.src = 'assets/default.png';">   </div>
+        </div>
+    </div>
+    <div class="footer d-flex flex-column mt-5">
+        <div class="row r4">
+            <div class="col-md-2 myt des"><a href="#">Description</a></div>
+            <div class="col-md-2 myt "><a href="#">Review</a></div>
+            <input type="text" name="Description" formControlName="Description" autocomplete="off" [(ngModel)]="product.Description">
+        </div>
+    </div>
+</div>
+<div align="center">
+<button type="submit" class="btn btn-success">Modify</button>
+</div>
+</form>

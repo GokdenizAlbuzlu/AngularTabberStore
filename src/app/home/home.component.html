@@ -1,0 +1,107 @@
+<h1>Tabber Store <div align="center"><img src="assets/brands.png"><img src="assets/brands.png"><img src="assets/logo.png"><img src="assets/brands.png"><img src="assets/brands.png"> </div></h1>
+
+
+  
+  <div class="dropdown">
+    <button class="dropbtn">Popular Brands</button>
+    <div class="dropdown-content">
+      <a [routerLink]="['/search', 'jordan']">Jordan</a>
+      <a [routerLink]="['/search', 'nike']">Nike</a>
+      <a [routerLink]="['/search', 'adidas']">Adidas</a>
+      <a [routerLink]="['/search', 'puma']">Puma</a>
+      <a [routerLink]="['/search', 'tommy']">Tommy Hilfiger</a>
+      <a [routerLink]="['/search', 'calvin']">Calvin klein</a>
+      <a [routerLink]="['/search', 'levis']">Levis</a>
+    </div>
+  </div>
+  <div class="dropdown"*ngIf="this.Accesoire">
+    <a class="dropbtn" [routerLink] ="['/search', 'accessoire']" routerLinkActive="active">Accessoires </a>
+  </div>
+  <div class="dropdown" *ngIf="this.Tshirt">
+    <a class="dropbtn" [routerLink] ="['/search', 'Tshirt']" routerLinkActive="active">Tshirts </a>
+  </div>
+  <div class="dropdown" *ngIf="this.Chaussure">
+    <a class="dropbtn" [routerLink]="['/search', 'chaussure']" routerLinkActive="active">Chaussures</a>
+  </div>
+  <div class="dropdown" *ngIf="this.Pantalon">
+    <a class="dropbtn" [routerLink]="['/search', 'pantalon']" routerLinkActive="active">Pantalons</a>
+  </div>
+  <div class="dropdown"*ngIf="this.Veste">
+    <a class="dropbtn" [routerLink]="['/search', 'Veste']" routerLinkActive="active">Vestes</a>
+  </div>
+  <div class="dropdown" *ngIf="this.Robe">
+    <a class="dropbtn" [routerLink]="['/search', 'Robe']" routerLinkActive="active">Robes</a>
+  </div>
+  <div class="dropdown" *ngIf="this.Sac">
+    <a class="dropbtn" [routerLink]="['/search', 'sac']" routerLinkActive="active">Sacs </a>
+  </div>
+  <div class="dropdown" *ngIf="this.Short">
+    <a class="dropbtn" [routerLink]="['/search', 'short']" routerLinkActive="active">Shorts </a>
+  </div>
+
+  
+  
+
+
+  <section>
+    <div align="center">
+    <h5>Search your product </h5>
+    <form [formGroup]="angForm" autocomplete="off" class="signin-form" >
+   <input name="searchInput" [(ngModel)]="searchInput" type="text" formControlName="keyword" placeholder="Search for products" size="50" list="prdocuts" ><a class="nav-link" [routerLink]="['/search',this.angForm.value.keyword]" routerLinkActive="active"><img src="./assets/searchBar.png" alt="" height="24" width="25"></a>
+  </form>
+       <datalist id="prdocuts">
+           <h6> Results </h6>
+           <ul>   
+             <li *ngFor="let product of   
+                AutoCompleteProducts | search: searchInput">
+                <option value={{product}}></option>
+             </li>
+           </ul>
+       </datalist>
+ 
+  </div>
+</section>
+Product Filter
+<button routerLink="/pricedesc">Filter by Desc Price</button>
+<button routerLink="/priceasc">Filter by Asc Price</button>
+
+<div class="container">
+  <div class="row row-cols-2">
+  <div *ngFor="let i of Products">
+  <div class="container page-wrapper">
+          <div class="page-inner">
+            <div class="row">
+              <div class="el-wrapper">
+                <div class="box-up">
+                  <img class="img" src="assets/{{i.ID}}.png" onerror="if (this.src != 'assets/default.png') this.src = 'assets/default.png';">   
+                  <div class="img-info">
+                    <div class="info-inner">
+                      <span class="p-name">{{i.Titre}}</span>
+                      <span class="p-company">{{i.Marque}}</span>
+                    </div>
+                    <div class="a-size">Available sizes : <span class="size">{{i.Taille}}</span></div>
+                  </div>
+                </div>
+        
+                <div class="box-down">
+                  <div class="h-bg">
+                    <div class="h-bg-inner"></div>
+                  </div>
+                  <a class="cart">
+                   
+                    <span class="price">{{i.Prix}}€</span>
+                    <span class="add-to-cart">
+                       <span class="txt"> <a class="nav-link" [routerLink]="['/userproductdetails', i.ID]" routerLinkActive="active">Buy</a></span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+          </div>
+          
+        </div>
+    
+  </div>
+  
